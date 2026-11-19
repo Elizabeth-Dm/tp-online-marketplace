@@ -1,5 +1,8 @@
 import { render } from 'preact'
-import './index.css'
-import { App } from './app.tsx'
+import './styles/index.css'
+
+function App() {
+    return <></>
+}
 
 render(<App />, document.getElementById('app')!)
