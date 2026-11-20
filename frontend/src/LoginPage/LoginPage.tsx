@@ -6,7 +6,7 @@ import heroImage from "../assets/images/login.png";
 
 type Mode = "register" | "login";
 
-export const LoginPage = () => {
+export const LoginPage = (_props: { path?: string }) => {
   const [mode, setMode] = useState<Mode>("register");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
