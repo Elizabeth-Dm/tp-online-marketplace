@@ -1,0 +1,223 @@
+﻿@use "../styles/variables" as *;
+
+.product-page {
+  min-height: 100vh;
+  background-color: $color-bg-main;
+  font-family: "Nunito", "Segoe UI", Arial, sans-serif;
+  color: $color-text-main;
+}
+
+.product {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+  display: grid;
+  grid-template-columns: minmax(0, 540px) minmax(0, 400px) 170px;
+  justify-content: center;
+  align-items: start;
+  gap: 24px;
+
+  &__title-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 14px;
+    padding: 0 4px;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  &__price {
+    font-size: 18px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  // Кнопки внизу, на одной линии со строкой «название / цена»
+  &__actions {
+    align-self: end;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+
+    .btn {
+      width: 100%;
+    }
+
+    .product__auction {
+      background-color: $color-btn-secondary;
+      border: none;
+      color: $color-text-main;
+
+      &:hover {
+        background-color: darken($color-btn-secondary, 6%);
+        color: $color-text-main;
+      }
+    }
+  }
+
+  &__buy-price {
+    font-size: 12px;
+  }
+}
+
+/* ---------- Галерея ---------- */
+.gallery {
+  padding: 18px;
+  background-color: $color-bg-white;
+  border-radius: 26px;
+
+  &__main {
+    position: relative;
+    aspect-ratio: 316 / 231;
+    background-color: $color-placeholder;
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: $color-arrow;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: darken($color-arrow, 10%);
+    }
+
+    &--prev {
+      left: 16px;
+    }
+
+    &--next {
+      right: 16px;
+    }
+  }
+
+  &__thumbs {
+    display: flex;
+    gap: 12px;
+    height: 104px;
+    margin-top: 12px;
+  }
+
+  &__thumb {
+    flex: 1;
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 18px;
+    background-color: $color-placeholder;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s;
+
+    // первое превью в макете вдвое шире остальных
+    &:first-child {
+      flex: 2;
+    }
+
+    &.is-active {
+      border-color: $color-primary;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+}
+
+/* ---------- Отзывы ---------- */
+.reviews {
+  &__title {
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #555;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.review {
+  padding: 14px 18px 16px;
+  background-color: $color-bg-white;
+  border-radius: 18px;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  &__avatar {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: $color-placeholder;
+  }
+
+  &__name {
+    flex: 1;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+}
+
+/* ---------- Мобильная версия ---------- */
+@media (max-width: 900px) {
+  .product {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 560px;
+    padding: 20px 14px 40px;
+    gap: 20px;
+
+    &__actions {
+      order: 2;
+      align-self: stretch;
+    }
+  }
+
+  .reviews {
+    order: 3;
+  }
+}
