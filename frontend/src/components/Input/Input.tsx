@@ -1,9 +1,7 @@
-import { type JSX } from "preact";
+import { type ComponentProps } from "preact";
 import "./Input.scss";
 
-interface InputProps extends JSX.HTMLAttributes<HTMLInputElement> {
-  type?: string;
-}
+type InputProps = ComponentProps<"input">;
 
 export function Input({ class: className = "", ...props }: InputProps) {
   return <input class={`input ${className}`} {...props} />;

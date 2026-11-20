@@ -1,12 +1,16 @@
-import { type JSX } from "preact";
+import { type ComponentProps } from "preact";
 import "./Button.scss";
 
-interface ButtonProps extends JSX.HTMLAttributes<HTMLButtonElement> {
+type ButtonProps = ComponentProps<"button"> & {
   variant?: "primary" | "secondary";
-  children: preact.ComponentChildren;
-}
+};
 
-export function Button({ variant = "primary", class: className = "", children, ...props }: ButtonProps) {
+export function Button({
+  variant = "primary",
+  class: className = "",
+  children,
+  ...props
+}: ButtonProps) {
   return (
     <button class={`btn btn--${variant} ${className}`} {...props}>
       {children}
