@@ -36,7 +36,11 @@ export function Header() {
 
         {/* Правая часть */}
         <div class="header__right">
-          <button class="header__icon-btn" aria-label="Корзина">
+          <button
+            class="header__icon-btn"
+            aria-label="Корзина"
+            onClick={() => (window.location.href = "/basket")}
+            >
             <svg
               width="28"
               height="28"
@@ -72,7 +76,7 @@ export function Header() {
           </button>
 
           {/* Ссылка с теми же стилями, что и у Button */}
-          <a href="/login" class="btn btn--primary">
+          <a href="/login" class="btn btn--primary" onClick={() => (window.location.href = "/login")}>
             Пользователь
           </a>
         </div>
