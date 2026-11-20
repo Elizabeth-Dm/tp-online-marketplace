@@ -1,0 +1,9 @@
+﻿@use "../../styles/variables" as *;
+
+.rating {
+  display: flex;
+  gap: 2px;
+  color: $color-star;
+  font-size: 18px;
+  line-height: 1;
+}
