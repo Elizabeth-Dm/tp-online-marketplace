@@ -3,7 +3,7 @@ import { Button } from "../components/Button/Button";
 import { products } from "../data/products";
 import "./BasketPage.scss";
 
-export function BasketPage() {
+export function BasketPage(_props: { path?: string }) {
   const basketProducts = products;
 
   const total = basketProducts.reduce(
