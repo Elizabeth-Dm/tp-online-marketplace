@@ -1,0 +1,234 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+$bg-page: #ffffff;
+$bg-card: #feeedd;
+$accent: #ff9f5a;
+$accent-hover: #ff8a3a;
+$accent-active: #f07a28;
+$text: #1f1f1f;
+$placeholder: #9b9b9b;
+$border-input: #2b2b2b;
+$divider: #c9c9c9;
+$radius-card: 14px;
+$radius-pill: 999px;
+$transition: 0.2s ease;
+
+.login-page,
+.login-page *,
+.login-page *::before,
+.login-page *::after {
+  box-sizing: border-box;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: $bg-page;
+  font-family: 'Nunito', 'Segoe UI', Arial, sans-serif;
+  color: $text;
+
+  &__inner {
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: minmax(280px, 380px) 1px 1fr;
+    align-items: center;
+    gap: 48px;
+  }
+
+  &__form-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__divider {
+    align-self: stretch;
+    min-height: 380px;
+    background: $divider;
+  }
+
+  &__hero {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__hero-img {
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    display: block;
+    user-select: none;
+  }
+
+  @media (max-width: 900px) {
+    &__inner {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      justify-items: center;
+    }
+
+    &__divider {
+      width: 100%;
+      max-width: 380px;
+      height: 1px;
+      min-height: 0;
+      align-self: auto;
+    }
+
+    &__hero {
+      order: 3;
+    }
+
+    &__hero-img {
+      max-width: 420px;
+    }
+  }
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  padding: 32px 28px 36px;
+  background: $bg-card;
+  border-radius: $radius-card;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__tabs {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  &__tab {
+    padding: 0 0 3px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    color: $text;
+    cursor: pointer;
+    transition: color $transition, border-color $transition, opacity $transition;
+
+    &:hover {
+      color: $accent-hover;
+    }
+
+    &.is-active {
+      font-weight: 700;
+      border-bottom-color: $text;
+
+      &:hover {
+        color: $text;
+      }
+    }
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  &__input {
+    width: 100%;
+    height: 44px;
+    padding: 0 18px;
+    background: #fff;
+    border: 1px solid $border-input;
+    border-radius: $radius-pill;
+    font: inherit;
+    font-size: 14px;
+    color: $text;
+    outline: none;
+    transition: border-color $transition, box-shadow $transition;
+
+    &::placeholder {
+      color: $placeholder;
+    }
+
+    &:hover {
+      border-color: $accent-hover;
+      box-shadow: 0 2px 8px rgba($accent, 0.25);
+    }
+
+    &:focus {
+      border-color: $accent;
+      box-shadow: 0 0 0 3px rgba($accent, 0.3);
+    }
+  }
+
+  &__remember {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    user-select: none;
+    transition: color $transition;
+
+    &:hover {
+      color: $accent-hover;
+    }
+  }
+
+  &__checkbox {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: $accent;
+    cursor: pointer;
+  }
+
+  &__submit {
+    align-self: center;
+    min-width: 140px;
+    height: 40px;
+    padding: 0 32px;
+    background: $accent;
+    border: none;
+    border-radius: $radius-pill;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    transition: background $transition, transform $transition, box-shadow $transition;
+
+    &:hover {
+      background: $accent-hover;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba($accent, 0.45);
+    }
+
+    &:active {
+      background: $accent-active;
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    &:focus-visible {
+      outline: 3px solid rgba($accent, 0.4);
+      outline-offset: 2px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 24px 18px 28px;
+
+    &__tabs {
+      gap: 16px;
+    }
+
+    &__submit {
+      width: 100%;
+    }
+  }
+}
