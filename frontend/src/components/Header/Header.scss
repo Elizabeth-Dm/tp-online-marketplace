@@ -2,13 +2,15 @@
 
 .header {
   width: 100%;
+  box-sizing: border-box;
   background-color: #efefef;
   padding: 20px 24px;
+  overflow: hidden;
 
   &__container {
     width: 100%;
     max-width: 1600px;
-    margin: 0 auto;
+    margin: auto;
     padding: 14px 40px;
     display: flex;
     align-items: center;
