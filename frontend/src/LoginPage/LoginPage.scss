@@ -1,17 +1,6 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+﻿@use "../styles/variables" as *;
 
-$bg-page: #ffffff;
-$bg-card: #feeedd;
-$accent: #ff9f5a;
-$accent-hover: #ff8a3a;
-$accent-active: #f07a28;
-$text: #1f1f1f;
-$placeholder: #9b9b9b;
-$border-input: #2b2b2b;
-$divider: #c9c9c9;
-$radius-card: 14px;
-$radius-pill: 999px;
-$transition: 0.2s ease;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
 
 .login-page,
 .login-page *,
@@ -26,9 +15,9 @@ $transition: 0.2s ease;
   align-items: center;
   justify-content: center;
   padding: 24px 16px;
-  background: $bg-page;
+  background: $color-bg-white; // Используем переменную
   font-family: 'Nunito', 'Segoe UI', Arial, sans-serif;
-  color: $text;
+  color: $color-text-main; // Используем переменную
 
   &__inner {
     width: 100%;
@@ -47,7 +36,7 @@ $transition: 0.2s ease;
   &__divider {
     align-self: stretch;
     min-height: 380px;
-    background: $divider;
+    background: $color-border; // Заменили $divider на нашу переменную
   }
 
   &__hero {
@@ -92,8 +81,8 @@ $transition: 0.2s ease;
   width: 100%;
   max-width: 380px;
   padding: 32px 28px 36px;
-  background: $bg-card;
-  border-radius: $radius-card;
+  background: #feeedd; // Бежевый фон из макета
+  border-radius: 14px; // $radius-card
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -113,20 +102,20 @@ $transition: 0.2s ease;
     font: inherit;
     font-size: 15px;
     font-weight: 600;
-    color: $text;
+    color: $color-text-main;
     cursor: pointer;
-    transition: color $transition, border-color $transition, opacity $transition;
+    transition: color 0.2s ease, border-color 0.2s ease;
 
     &:hover {
-      color: $accent-hover;
+      color: $color-primary-hover; // Оранжевый
     }
 
     &.is-active {
       font-weight: 700;
-      border-bottom-color: $text;
+      border-bottom-color: $color-text-main;
 
       &:hover {
-        color: $text;
+        color: $color-text-main;
       }
     }
   }
@@ -137,34 +126,6 @@ $transition: 0.2s ease;
     gap: 14px;
   }
 
-  &__input {
-    width: 100%;
-    height: 44px;
-    padding: 0 18px;
-    background: #fff;
-    border: 1px solid $border-input;
-    border-radius: $radius-pill;
-    font: inherit;
-    font-size: 14px;
-    color: $text;
-    outline: none;
-    transition: border-color $transition, box-shadow $transition;
-
-    &::placeholder {
-      color: $placeholder;
-    }
-
-    &:hover {
-      border-color: $accent-hover;
-      box-shadow: 0 2px 8px rgba($accent, 0.25);
-    }
-
-    &:focus {
-      border-color: $accent;
-      box-shadow: 0 0 0 3px rgba($accent, 0.3);
-    }
-  }
-
   &__remember {
     display: inline-flex;
     align-items: center;
@@ -172,10 +133,11 @@ $transition: 0.2s ease;
     font-size: 13px;
     cursor: pointer;
     user-select: none;
-    transition: color $transition;
+    transition: color 0.2s ease;
+    margin-top: 5px;
 
     &:hover {
-      color: $accent-hover;
+      color: $color-primary-hover;
     }
   }
 
@@ -183,41 +145,15 @@ $transition: 0.2s ease;
     width: 16px;
     height: 16px;
     margin: 0;
-    accent-color: $accent;
+    accent-color: $color-primary; // Оранжевый чекбокс
     cursor: pointer;
   }
 
-  &__submit {
-    align-self: center;
-    min-width: 140px;
-    height: 40px;
-    padding: 0 32px;
-    background: $accent;
-    border: none;
-    border-radius: $radius-pill;
-    font: inherit;
-    font-size: 13px;
-    font-weight: 600;
-    color: #fff;
-    cursor: pointer;
-    transition: background $transition, transform $transition, box-shadow $transition;
-
-    &:hover {
-      background: $accent-hover;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 14px rgba($accent, 0.45);
-    }
-
-    &:active {
-      background: $accent-active;
-      transform: translateY(0);
-      box-shadow: none;
-    }
-
-    &:focus-visible {
-      outline: 3px solid rgba($accent, 0.4);
-      outline-offset: 2px;
-    }
+  // Новый класс для центрирования нашей новой кнопки
+  &__actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
   }
 
   @media (max-width: 480px) {
@@ -227,8 +163,12 @@ $transition: 0.2s ease;
       gap: 16px;
     }
 
-    &__submit {
+    // На мобилках кнопка растягивается на всю ширину
+    &__actions {
       width: 100%;
+      button {
+        width: 100%;
+      }
     }
   }
 }

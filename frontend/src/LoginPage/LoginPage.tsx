@@ -1,4 +1,6 @@
 ﻿import { type FormEvent, useState } from "react";
+import { Button } from "../components/Button/Button";
+import { Input } from "../components/Input/Input";
 import "./LoginPage.scss";
 import heroImage from "../assets/images/login.png";
 
@@ -15,7 +17,6 @@ export const LoginPage = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO: отправка данных на сервер
     console.log({ mode, login, password, repeatPassword, remember });
   };
 
@@ -46,16 +47,15 @@ export const LoginPage = () => {
             </div>
 
             <div className="login-card__fields">
-              <input
-                className="login-card__input"
+              {/* Используем наш компонент Input */}
+              <Input
                 type="text"
                 placeholder="Логин"
                 autoComplete="username"
                 value={login}
                 onChange={(e) => setLogin(e.currentTarget.value)}
               />
-              <input
-                className="login-card__input"
+              <Input
                 type="password"
                 placeholder="Пароль"
                 autoComplete={isRegister ? "new-password" : "current-password"}
@@ -63,8 +63,7 @@ export const LoginPage = () => {
                 onChange={(e) => setPassword(e.currentTarget.value)}
               />
               {isRegister && (
-                <input
-                  className="login-card__input"
+                <Input
                   type="password"
                   placeholder="Повторите пароль"
                   autoComplete="new-password"
@@ -84,9 +83,12 @@ export const LoginPage = () => {
               <span>Запомни меня</span>
             </label>
 
-            <button className="login-card__submit" type="submit">
-              Войти
-            </button>
+            {/* Используем наш компонент Button и оборачиваем для центрирования */}
+            <div className="login-card__actions">
+              <Button variant="primary" type="submit">
+                Войти
+              </Button>
+            </div>
           </form>
         </section>
 

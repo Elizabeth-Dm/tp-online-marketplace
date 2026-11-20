@@ -1,0 +1,104 @@
+@use "../../styles/variables" as *;
+
+.header {
+  width: 100%;
+  background-color: #efefef;
+  padding: 20px 24px;
+
+  &__container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    background-color: $color-bg-white;
+    border-radius: 18px;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 20px;
+    font-weight: 600;
+    color: $color-text-main;
+    text-decoration: none;
+
+    &-icon {
+      width: 40px;
+      height: 40px;
+      background-color: #d9d9d9;
+      border-radius: 10px;
+    }
+  }
+
+  &__search {
+    position: relative;
+    flex: 0 1 520px;
+
+    // Переопределяем стили Input под поиск из макета
+    .header__search-input {
+      height: 40px;
+      padding: 0 20px 0 48px; // место под лупу
+      border: none;
+      background-color: #f1f1f1;
+      box-shadow: none;
+      font-size: 16px;
+
+      &:hover {
+        box-shadow: none;
+        background-color: #ebebeb;
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 3px rgba($color-primary, 0.3);
+      }
+    }
+  }
+
+  &__search-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    pointer-events: none;
+  }
+
+  &__right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    // Ссылка "Пользователь" — чуть крупнее шрифт
+    .btn {
+      font-size: 16px;
+      text-decoration: none;
+    }
+  }
+
+  &__icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $color-text-main;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}
